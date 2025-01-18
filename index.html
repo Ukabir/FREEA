@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="page.css">
+    </head>
+    <body>
+        <div class="body">
+            <div action="#" id="form" >
+                <div class="info">
+                    <label for="">Name:</label>
+                    <input type="text" id="name">
+                </div>
+                <div class="info">
+                    <label for="">Email:</label>
+                    <input type="email" id="email">
+                </div>
+                <div class="info">
+                    <label for="">Phone No:</label>
+                    <input type="tel" id="tel">
+                </div>
+                <div class="plans">
+                    <div class="div">
+                        <input type="radio" name="p-plan" id="plan1">
+                        <div class="plan-info">
+                            <h2>Free Plan</h2>
+                            <div>
+                                This will be a single page website. All information collected will be displayed in a single page.
+                                <li>1 page</li>
+                                <li>Simple design and layout</li>
+                                <li>Given Information cannot be changed</li>
+                                <li>Your design will be fairly considered</li>
+                                <li>Free Hosting</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div">
+                        <input type="radio" name="p-plan" id="plan2">
+                        <div class="plan-info">
+                            <h2>10K Plan</h2>
+                            <div>
+                                This will be a multi page website, limited to 5 pages. The informations will be divided between the pages giving a more clean and idealistic portfolio.
+                                <li>Multiple Pages. Max 5</li>
+                                <li>Simple design and layout</li>
+                                <li>Your design will be fairly considered</li>
+                                <li>Given Information cannot be changed</li>
+                                <li>Free Hosting</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div">
+                        <input type="radio" name="p-plan" id="plan3">
+                        <div class="plan-info">
+                            <h2>50K Plan</h2>
+                            <div>
+                                This will be a custom multi page website, limited to 5 pages. The informations will be divided between the pages giving a more clean and idealistic portfolio and the you can change the given informations later.
+                                <li>Multiple Pages. Max 5</li>
+                                <li>Simple design and layout</li>
+                                <li>Your design will be fully considered</li>
+                                <li>Given Information is customizable</li>
+                                <li>Free Hosting</li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info txtarea">
+                    <label for="">Additional Information</label>
+                    <textarea name="" id="txt">Please input little details about your work... </textarea>
+                </div>
+                <p>After Subscribing you will rceive a mail and details about the website will be collected accordingly </p>
+                <div id="toc">
+                    <input type="checkbox" name="" id="check">
+                    <a href="#">Terms and Conditions</a>
+                </div>
+                <button id="btn" onclick="submit()">Subscribe
+                    <div class="color"></div>
+                </button>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="page.js"></script>
