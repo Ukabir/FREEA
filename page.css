@@ -210,8 +210,8 @@ body {
     display: none;
 }
 .div1 {
-        width: 50px;
-        height: 50px;
+        width: 150px;
+        height: 150px;
         background-color: yellow;
         animation-name: animate;
         animation-duration: 2s;
