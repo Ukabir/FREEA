@@ -76,6 +76,9 @@
         <div class="footer">
             <h3>Made possible by<span>🤜🏼D🤛🏼</span>team</h3>
         </div>
+        <div class="b-div" id="spin">
+            <div class="div1"></div>
+        </div>
         <script type="module">
                // Import the functions you need from the SDKs you need
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
@@ -99,6 +102,7 @@
             let phoneNoRegex = /^(?:\+234|0)[789]{1}[0-1]{1}[0-9]{8}$/
             let nameField
             let emailField
+            let pin = document.getElementById('spin')
             let telNoField
             let txtField
             const db = getDatabase(app);
@@ -107,17 +111,20 @@
             const plan3 = document.getElementById('plan3')
             document.getElementById("submit").addEventListener('click', function(e){
                 e.preventDefault();
+                spin()
                 nameField = document.getElementById('username').value.trim()
                 emailField = document.getElementById('email').value.trim()
                 telNoField = document.getElementById('phone').value.trim()
                 txtField = document.getElementById('txt').value.trim()
                 if (nameField == '' || emailField == '' || telNoField == '' || txtField == '') {
                     alert('All fields required')
+                    unspin()
                     return
                 }
                 if (plan1.checked || plan2.checked || plan3.checked) {
                 }else {
                     alert('Pick a plan')
+                    unspin()
                     return
                 }
                 let validation1 = emailRegex.test(emailField)
@@ -126,10 +133,12 @@
                 
                 if (!validation1) {
                     alert('Incorrect email')
+                    unspin()
                     return
                 }
                 if (!validation2) {
                     alert('Incorrect Phone Number')
+                    unspin()
                     return
                 }
                 let chosenPlan
@@ -149,9 +158,18 @@
                 chosenPlan: chosenPlan,
                 text: txtField
             });
-                alert("Subscription successfull!");
+            setTimeout(() => {
                 window.location.href = 'success.html'
-            })
+                }, 5000);
+                alert("Subscription successfull!");
+            }
+        )
+        function spin() {
+            pin.style.display = 'flex'
+        }
+        function unspin() {
+            pin.style.display = 'none'
+        }
         </script>
     </body>
 </html>
