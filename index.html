@@ -1,29 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Firebase_form</title>
         <link rel="stylesheet" href="page.css">
     </head>
     <body>
         <div class="body">
-            <div action="#" id="form" >
+            <form id="form">
                 <div class="info">
                     <label for="">Name:</label>
-                    <input type="text" id="name">
+                    <input type="text" value="" id="username">
                 </div>
                 <div class="info">
                     <label for="">Email:</label>
-                    <input type="email" id="email">
+                    <input type="email" value="" id="email">
                 </div>
                 <div class="info">
-                    <label for="">Phone No:</label>
-                    <input type="tel" id="tel">
+                    <label for="">Phone Number:</label>
+                    <input type="text" value="" id="phone">
                 </div>
                 <div class="plans">
                     <div class="div">
-                        <input type="radio" name="p-plan" id="plan1">
+                        <input type="radio" name="p-plan" id="plan1" value="plan1">
                         <div class="plan-info">
                             <h2>Free Plan</h2>
                             <div>
@@ -37,7 +34,7 @@
                         </div>
                     </div>
                     <div class="div">
-                        <input type="radio" name="p-plan" id="plan2">
+                        <input type="radio" name="p-plan" id="plan2" value="plan2">
                         <div class="plan-info">
                             <h2>10K Plan</h2>
                             <div>
@@ -51,7 +48,7 @@
                         </div>
                     </div>
                     <div class="div">
-                        <input type="radio" name="p-plan" id="plan3">
+                        <input type="radio" name="p-plan" id="plan3" value="plan3">
                         <div class="plan-info">
                             <h2>50K Plan</h2>
                             <div>
@@ -69,16 +66,87 @@
                     <label for="">Additional Information</label>
                     <textarea name="" id="txt">Please input little details about your work... </textarea>
                 </div>
-                <p>After Subscribing you will rceive a mail and details about the website will be collected accordingly </p>
-                <div id="toc">
-                    <input type="checkbox" name="" id="check">
-                    <a href="#">Terms and Conditions</a>
-                </div>
-                <button id="btn" onclick="submit()">Subscribe
+                <p>After Subscribing you will receive a mail and details about the website will be collected accordingly. Details on plans that include transaction will be sent to users email  </p>
+                <button class="btn" type="submit" value="submit" class="sub" id="submit">Subscribe
                     <div class="color"></div>
                 </button>
-            </div>
+            </form>
         </div>
+        <script type="module">
+               // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+            import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+  // Your web app's Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyCgLSjjZa886cNavXKoghhD0V2cvxCaL_M",
+                authDomain: "freefor-all.firebaseapp.com",
+                databaseURL: "https://freefor-all-default-rtdb.firebaseio.com",
+                projectId: "freefor-all",
+                storageBucket: "freefor-all.firebasestorage.app",
+                messagingSenderId: "244837751736",
+                appId: "1:244837751736:web:102bf452cae2ce67f5cd4d"
+            };
+
+  // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+
+   //get ref to database services
+            let emailRegex = /^[A-Za-z0-9]+[@][a-z]+[.][a-z]{2,3}$/i
+            let phoneNoRegex = /^(?:\+234|0)[789]{1}[0-1]{1}[0-9]{8}$/
+            let nameField
+            let emailField
+            let telNoField
+            let txtField
+            const db = getDatabase(app);
+            const plan1 = document.getElementById('plan1')
+            const plan2 = document.getElementById('plan2')
+            const plan3 = document.getElementById('plan3')
+            document.getElementById("submit").addEventListener('click', function(e){
+                e.preventDefault();
+                nameField = document.getElementById('username').value.trim()
+                emailField = document.getElementById('email').value.trim()
+                telNoField = document.getElementById('phone').value.trim()
+                txtField = document.getElementById('txt').value.trim()
+                if (nameField == '' || emailField == '' || telNoField == '' || txtField == '') {
+                    alert('All fields required')
+                    return
+                }
+                if (plan1.checked || plan2.checked || plan3.checked) {
+                }else {
+                    alert('Pick a plan')
+                    return
+                }
+                let validation1 = emailRegex.test(emailField)
+                let validation2 = phoneNoRegex.test(telNoField)
+                console.log(validation1,validation2);
+                
+                if (!validation1) {
+                    alert('Incorrect email')
+                    return
+                }
+                if (!validation2) {
+                    alert('Incorrect Phone Number')
+                    return
+                }
+                let chosenPlan
+                if (plan1.checked) {
+                    chosenPlan = 'Free plan'
+                }else if(plan2.checked) {
+                    chosenPlan = '10k Plan'
+                }else {
+                    chosenPlan = '50k plan'
+                }
+                let newStr = emailField.replace(".", "")
+            set(ref(db, 'Alluser/' +newStr ),
+            {
+                email: emailField,
+                name: nameField,
+                PhoneNumber: telNoField,
+                chosenPlan: chosenPlan,
+                text: txtField
+            });
+                alert("Subscription successfull!");
+            })
+        </script>
     </body>
 </html>
-<script src="page.js"></script>
