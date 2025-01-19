@@ -67,7 +67,9 @@
                     <label for="">Additional Information</label>
                     <textarea name="" id="txt">Please input some details about your work... </textarea>
                 </div>
-                <p>After Subscribing you will receive a mail and details about the website will be collected accordingly. Details on plans that include transaction will be sent to users email  </p>
+                <p>
+                    <input type="checkbox" name="" id="check">
+                    After Subscribing you will receive a mail in less than 24hrs and details about the website will be collected accordingly, if the mail is not found you should check your spam for the mail. Details on plans that include transaction will be sent to users email  </p>
                 <button class="btn" type="submit" value="submit" class="sub" id="submit">Subscribe
                     <div class="color"></div>
                 </button>
@@ -126,6 +128,10 @@
                     return
                 }
                 if (plan1.checked || plan2.checked || plan3.checked) {
+                    if (!check.checked) {
+                        alert('Please read the NOTE and accept')
+                        return
+                    }
                 }else {
                     alert('Pick a plan')
                     unspin()
