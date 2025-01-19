@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Firebase_form</title>
+        <title>Free portfolio</title>
         <link rel="stylesheet" href="page.css">
     </head>
     <body>
@@ -58,19 +58,23 @@
                                 <li>Your design will be fully considered</li>
                                 <li>Given Information is customizable</li>
                                 <li>Free Hosting</li>
+                                <li>Access to long-term services</li>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="info txtarea">
                     <label for="">Additional Information</label>
-                    <textarea name="" id="txt">Please input little details about your work... </textarea>
+                    <textarea name="" id="txt">Please input some details about your work... </textarea>
                 </div>
                 <p>After Subscribing you will receive a mail and details about the website will be collected accordingly. Details on plans that include transaction will be sent to users email  </p>
                 <button class="btn" type="submit" value="submit" class="sub" id="submit">Subscribe
                     <div class="color"></div>
                 </button>
             </form>
+        </div>
+        <div class="footer">
+            <h3>Made possible by<span>🤜🏼D🤛🏼</span>team</h3>
         </div>
         <script type="module">
                // Import the functions you need from the SDKs you need
@@ -146,6 +150,7 @@
                 text: txtField
             });
                 alert("Subscription successfull!");
+                window.location.href = 'success.html'
             })
         </script>
     </body>
